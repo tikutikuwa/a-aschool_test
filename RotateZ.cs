@@ -2,22 +2,12 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Bullet : MonoBehaviour
+public class RotateZ : MonoBehaviour
 {
-    public Rigidbody rbody;
-    public float bulletSpeed;
+    public float rotSpeedZ;
 
-    void Start()
+    private void FixedUpdate()
     {
-        rbody.AddForce(transform.forward * bulletSpeed, ForceMode.Impulse);
-        Destroy(gameObject, 5);
-    }
-
-    private void OnTriggerEnter(Collider other)
-    {
-        if (other.tag == "Player")
-        {
-            other.GetComponent<PlayerController>().OnAttacked();
-        }
+        transform.Rotate(0, 0, rotSpeedZ);
     }
 }
